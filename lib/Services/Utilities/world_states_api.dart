@@ -15,4 +15,15 @@ class WorldStatesapi {
       throw Exception('error');
     }
   }
+
+  Future<List> FetchCountriesList() async {
+    final response = await http.get(Uri.parse(AppUrl.countrieslist));
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      return data;
+    } else {
+      throw Exception('error');
+    }
+  }
 }
